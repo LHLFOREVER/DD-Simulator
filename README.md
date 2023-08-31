@@ -2,7 +2,7 @@
 ```python
 import openai
 
-openai.api_key = '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'
+openai.api_key = 'Your API key '
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
