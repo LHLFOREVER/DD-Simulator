@@ -1,5 +1,5 @@
 # Dungeons-and-Dragons-Simulator
-'''python 
+```python
 import openai
 
 openai.api_key = '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'
@@ -18,4 +18,5 @@ while True:
         break
     response = generate_response(user_input)
     print("D&D query generator:", response)
-'''
+
+```    
