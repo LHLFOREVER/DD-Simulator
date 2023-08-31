@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = 'Your API key '
+openai.api_key = 'enter Your API key '
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
