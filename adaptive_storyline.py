@@ -16,7 +16,7 @@ def generate_dnd_story(game_state, player_action):
     prompt += "What happens next?"
 
     response = openai.Completion.create(
-        engine="text-davinci-002",
+        engine="text-davinci-003",
         prompt=prompt,
         max_tokens=100,
         n=1,
