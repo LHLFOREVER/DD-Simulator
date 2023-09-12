@@ -1,7 +1,14 @@
 import openai
 
 # Set up your OpenAI API key
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = ""
+
+#with open(r"/Users/kofwanalawson/Downloads/D&D_Key.txt") as f:
+   # key = f.read()
+#print(key)
+#key = key.strip(" ")
+#openai.api_key  = key
+
 
 # Initial prompt to generate an NPC
 npc_prompt = "Create an NPC for a Dungeons & Dragons game. This NPC is a wise old wizard who resides in a tower deep within the enchanted forest."
@@ -29,7 +36,7 @@ def respond_to_player(player_input):
         max_tokens=100  # response length
     )
 
-    npc_response = response.choices[0].text.strip().split("NPC: ")[1]
+    npc_response = response.choices[0].text.strip().split("NPC: ")[0]
     return npc_response
 
 # Generate initial NPC
