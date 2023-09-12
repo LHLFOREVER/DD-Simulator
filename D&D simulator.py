@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import simpledialog, messagebox
 
 #API key
-openai.api_key = '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'
+openai.api_key = 'Enter your key'
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
