@@ -20,6 +20,7 @@ Attributes = {
     "STR":[],
     "DEX":[],
     "VIT":[],
+    "INT":[],
     "SPD":[]
 }
 
@@ -50,6 +51,11 @@ Knight = {
 Nobility = {
     "Rank": ["Royal Family", "Duke", "Duchess", "Marquess", "Marchioness", "Count", "Countess", "Viscount", "Viscountess", "Baron", "Baroness"],
     "Nobility Status":["False", "True", "Fallen"],
+}
+
+
+Environment = {
+    "Setting": ["Kingdom", ]
 }
 
 
