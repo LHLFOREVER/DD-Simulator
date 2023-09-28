@@ -2,38 +2,26 @@
 
 Person = {
     "Status":["Nobility", "Knight", "Civilian", "Criminal"],
-    "Affiliation":["Group", "Job"],
-    "Job":["Group", "Salary","Years Experience"]
-}
-
-Affiliation = {
-    "Group":["Farmer's Guild", "Merchant's Guild", "Labor Union", "Government", "Black Market", "Adventurer's Guild", "Culinary Union","Entertainment Union", "Smithy Guild", "Spiritual Union", "Treasury", "Medical Guild", "Researchers Union", "Teacher's Union", "Education Association", "Military", "Service Union"],
+    "Affiliation":["Group"],
+    "Attributes":["HP","STR","DEX","VIT","INT","SPD"],
+    "Species":["Race"]
     
 }
 
-Group = {
-    "Farmer's Guild":[],
-    "Merchant's Guild":[],
-    "Labor Union":[],
-    "Government":[],
-    "Black Market":[],
-    "Adventurer's Guild":[],
-    "Culinary Union":[],
-    "Entertainment Union":[],
-    "Smithy Guild":[],
-    "Spiritual Union":[],
-    "Treasury":[],
-    "Medical Guild":[],
-    "Researchers Union":[],
-    "Teacher's Union":[],
-    "Education Association":[],
-    "Military":[],
-    "Service Union":[]
-
-
-
+Affiliation = {
+    "Group":["Farmer's Guild", "Merchant's Guild", "Labor Union", "Government", "Black Market", "Adventurer's Guild", "Culinary Union","Entertainment Union", "Smithy Guild", "Spiritual Union", "Treasury", "Medical Guild", "Researchers Union", "Teacher's Union", "Education Association", "Military", "Service Union"],   
 }
 
+Species = {
+    "Race":["Elf","Half-Elf", "Dwarf", "Fairy", "Human", "Draconian", "Beastkind","Demon", "Hybrid", "Angel", "Undead", "Vampire", "Werewolves"]
+}
+Attributes = {
+    "HP":[],
+    "STR":[],
+    "DEX":[],
+    "VIT":[],
+    "SPD":[]
+}
 
 
 Status = {
@@ -63,3 +51,6 @@ Nobility = {
     "Rank": ["Royal Family", "Duke", "Duchess", "Marquess", "Marchioness", "Count", "Countess", "Viscount", "Viscountess", "Baron", "Baroness"],
     "Nobility Status":["False", "True", "Fallen"],
 }
+
+
+
