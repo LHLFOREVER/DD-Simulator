@@ -1,5 +1,8 @@
 # Data Dictionary File
 
+import random
+
+
 Person = {
     "Status":["Nobility", "Knight", "Civilian", "Criminal"],
     "Affiliation":["Group"],
@@ -13,7 +16,7 @@ Affiliation = {
 }
 
 Species = {
-    "Race":["Elf","Half-Elf", "Dwarf", "Fairy", "Human", "Draconian", "Beastkind","Demon", "Hybrid", "Angel", "Undead", "Vampire", "Werewolves"]
+    "Race":["Elf","Half-Elf", "Dwarf", "Fairy", "Human", "Draconian", "Beastkind","Demon", "Hybrid", "Angel", "Undead", "Vampire", "Werewolf"]
 }
 Attributes = {
     "HP":[],
@@ -55,8 +58,18 @@ Nobility = {
 
 
 Environment = {
-    "Setting": ["Kingdom", ]
+    "Region": ["Human Kingdom", "The Wilds", "Small Village", "Elven Forest", "Elven Kingdom", "Dwarven Kingdom", "Religious Grounds", "Dragon's Lair", "Demon Realm"],
+    "Location":["Adventurer's Guild", "Restaurant", "Inn","Townperson's Home", "Hut", "Villian's Castle", "Dark Cave", "Dungeon", "Temple", "Garden", "Dark Alley", "Flower Shop", "Cafe" ],
+    "Locsize":["Size", "Floors", "Rooms"]
 }
 
+LocSize = {
+    "size":["Small", "Medium", "Large"],
+}
+Floors = []
+Rooms =[]
+
+if LocSize == "Small":
+    Floors = random.randint(1,3)
 
 
