@@ -1,9 +1,9 @@
 import openai
+from DDDictionary import Environment
 
 # Replace 'your-api-key' with your actual API key
 api_key = 'your-api-key'
 openai.api_key = api_key
-
 
 # The generate_dnd_story function takes a game_state dictionary 
 # and a player_action as input. This makes it more adaptable to different game situations in D&D.
@@ -27,8 +27,8 @@ def generate_dnd_story(game_state, player_action):
 
 # Example usage:
 game_state = {
-    'location': 'mysterious cave',
-    'party_members': ['wizard', 'rogue', 'fighter'],
+    'location': random.choice(Environment['Region']),  # Use a random location from the dictionary
+    'party_members': [random.choice(Person['Species']) for _ in range(3)],  # Random party members
     'current_player': 'John',
 }
 
@@ -36,7 +36,6 @@ player_action = "explore the dark corners of the cave, searching for hidden trea
 
 generated_text = generate_dnd_story(game_state, player_action)
 print(generated_text)
-
 
 
 # The prompt is constructed to include details about the game state, location,
