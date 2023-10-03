@@ -19,12 +19,12 @@ Species = {
     "Race":["Elf","Half-Elf", "Dwarf", "Fairy", "Human", "Draconian", "Beastkind","Demon", "Hybrid", "Angel", "Undead", "Vampire", "Werewolf"]
 }
 Attributes = {
-    "HP":[],
-    "STR":[],
-    "DEX":[],
-    "VIT":[],
-    "INT":[],
-    "SPD":[]
+    "HP": 1,
+    "STR":1,
+    "DEX":1,
+    "VIT":1,
+    "INT":1,
+    "SPD":1
 }
 
 
@@ -66,8 +66,8 @@ Environment = {
 LocSize = {
     "size":["Small", "Medium", "Large"],
 }
-Floors = ""
-Rooms = ""
+Floors = 0
+Rooms = 0
 
 if LocSize.get("size") == "Large":
     Floors = random.randint(11,100)
