@@ -69,10 +69,10 @@ LocSize = {
 Floors = []
 Rooms =[]
 
-if LocSize == "Large":
+if LocSize.get("size") == "Large":
     Floors = random.randint(11,100)
     Rooms = random.randint(11,100)
-elif LocSize == "Medium":
+elif LocSize.get("size") == "Medium":
     Floors = random.randint(4,10)
     Rooms = random.randint(4,10)
 else:
