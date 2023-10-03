@@ -2,12 +2,13 @@
 
 import random
 
-
+# Playable Characters and Friendly NPCs
 Person = {
     "Status":["Nobility", "Knight", "Civilian", "Criminal"],
     "Affiliation":["Group"],
     "Attributes":["HP","STR","DEX","VIT","INT","SPD"],
-    "Species":["Race"]
+    "Species":["Race"],
+    "Level":1
     
 }
 
@@ -26,7 +27,6 @@ Attributes = {
     "INT":1,
     "SPD":1
 }
-
 
 Status = {
     "Nobility":["Rank","Nobility Status"],
@@ -57,10 +57,15 @@ Nobility = {
 }
 
 
+
+
+# Environment
+
+
+
 Environment = {
     "Region": ["Human Kingdom", "The Wilds", "Small Village", "Elven Forest", "Elven Kingdom", "Dwarven Kingdom", "Religious Grounds", "Dragon's Lair", "Demon Realm"],
     "Location":["Adventurer's Guild", "Restaurant", "Inn","Townperson's Home", "Hut", "Villian's Castle", "Dark Cave", "Dungeon", "Temple", "Garden", "Dark Alley", "Flower Shop", "Cafe" ],
-    "Locsize":["Size", "Floors", "Rooms"]
 }
 
 LocSize = {
@@ -69,6 +74,16 @@ LocSize = {
 Floors = 0
 Rooms = 0
 
+
+for loc in Environment.get("location"):
+    if Environment.get("Location") == "Villian's Castle" or "Temple" or "Adventurer's Guild":
+        LocSize["size"] = "Medium"
+    elif Environment.get("Location") == "Dark Cave" or "Dungeon":
+        LocSize["size"] = "Large"
+    else:
+        LocSize["size"] = "Small"
+
+# Determining Building Size
 if LocSize.get("size") == "Large":
     Floors = random.randint(11,100)
     Rooms = random.randint(11,100)
@@ -80,3 +95,13 @@ else:
     Rooms = random.randint(1,3)
 
 
+
+# Enemies
+
+Wild_Mobs = {
+    "wild":["slime","goblin", "zombie", "orc", "constructs"]
+}
+
+Thinker_Mobs = {
+    "thinker":["bandit", "robot", "robber", "villian's servant"]
+}
