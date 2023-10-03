@@ -66,8 +66,8 @@ Environment = {
 LocSize = {
     "size":["Small", "Medium", "Large"],
 }
-Floors = []
-Rooms =[]
+Floors = ""
+Rooms = ""
 
 if LocSize.get("size") == "Large":
     Floors = random.randint(11,100)
