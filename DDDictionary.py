@@ -8,7 +8,8 @@ Person = {
     "Affiliation":["Group"],
     "Attributes":["HP","STR","DEX","VIT","INT","SPD"],
     "Species":["Race"],
-    "Level":1
+    "Level":1,
+    "Experience":0
     
 }
 
@@ -98,8 +99,19 @@ else:
 
 # Enemies
 
+Enemy = {
+    "Status":["Nobility", "Knight", "Civilian", "Criminal"],
+    "Affiliation":"Chaos",
+    "Attributes":["HP","STR","DEX","VIT","INT","SPD"],
+    "Species":["Wild_Mobs, Thinker_Mobs"],
+    "Level":1,
+    "Experience":0
+    
+}
+
+
 Wild_Mobs = {
-    "wild":["slime","goblin", "zombie", "orc", "constructs"]
+    "wild":["slime","goblin", "zombie", "orc", "construct"]
 }
 
 Thinker_Mobs = {
