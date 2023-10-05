@@ -5,6 +5,11 @@ import tkinter as tk
 from tkinter import simpledialog, messagebox
 from PIL import Image, ImageTk
 
+from DDDictionary import Environment
+
+import random
+from DDDictionary import Person, Status, Species, Attributes, Affiliation
+
 # API key
 openai.api_key = 'enter API key'
 
@@ -75,15 +80,6 @@ history_text.config(state=tk.DISABLED)
 
 app.mainloop()
 
-
-import openai
-#Setup.py
-# Set your OpenAI API key here
-#openai.api_key = " " #authentification
-with open(r"/Users/kofwanalawson/Downloads/D&D_Key.rtf") as f:
-    key = f.read()
-openai.api_key  = key
-
 # Define a prompt that outlines the task for the model
 prompt = "You are ChatGPT, a helpful AI assistant. Answer the following questions:\n1. What is the capital of France?"
 
@@ -97,15 +93,11 @@ response = openai.Completion.create(
 # Process and print the generated response
 generated_text = response.choices[0].text
 print(generated_text)
-# had to remove my key and push again ahh
+
+
+#-----------------------------------------------------------------------------------------
 
 # Adaptive_Storyline.py
-import openai
-from DDDictionary import Environment
-
-# Replace 'your-api-key' with your actual API key
-api_key = 'your-api-key'
-openai.api_key = api_key
 
 # The generate_dnd_story function takes a game_state dictionary 
 # and a player_action as input. This makes it more adaptable to different game situations in D&D.
@@ -148,15 +140,9 @@ print(generated_text)
 # The generated text will continue the story in a D&D-like context based on the provided
 # game state and player action.
 
-
+#--------------------------------------------------------------------------------
 #simulated NPCs.py
 
-import openai
-import random
-from DDDictionary import Person, Status, Species, Attributes, Affiliation
-
-# Set up your OpenAI API key
-openai.api_key = "your-api-key"
 
 # Initial prompt to generate an NPC
 npc_prompt = "Create an NPC for a Dungeons & Dragons game. This NPC is a wise old wizard who resides in a tower deep within the enchanted forest."
