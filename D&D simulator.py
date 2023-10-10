@@ -92,7 +92,7 @@ label.grid(row=0, column=0, padx=10, pady=10)
 user_input_entry = tk.Entry(frame, width=50, font=custom_font)
 user_input_entry.grid(row=0, column=1, padx=10, pady=10)
 
-submit_button = tk.Button(frame, text="Generate", command=get_response, activebackground='#ADD8E6', activeforeground='#000000')
+submit_button = tk.Button(frame, text="Generate", command=get_response, activebackground='red', activeforeground='#000000')
 submit_button.grid(row=1, column=0, columnspan=2, pady=20)
 
 history_text = tk.Text(frame, width=80, height=10, wrap=tk.WORD, font=custom_font)
