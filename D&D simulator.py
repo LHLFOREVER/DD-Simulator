@@ -6,7 +6,7 @@ import random
 import time
 
 # API key
-openai.api_key = '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'
+openai.api_key = 'Enter your API key'
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
