@@ -68,78 +68,7 @@ Environment = {
 LocSize = {
     "size":["Small", "Medium", "Large"],
 }
-Floors = 0
-Rooms = 0
-def location_build(place):
-    for place in Environment["Location"]:
-        if Environment["Location"] == ("Villian's Castle" or "Temple" or "Adventurer's Guild"):
-            LocSize["size"] = "Medium"
-        elif Environment["Location"] == ("Dark Cave" or "Dungeon"):
-            LocSize["size"] = "Large"
-        elif Environment["Location"] != ("Dark Cave" or "Dungeon" or "Villian's Castle" or "Temple" or "Adventurer's Guild"):
-            LocSize["size"] = "Small"
-        else:
-            return("Please enter a valid location.")
 
-# Determining Building Size
-    if LocSize["size"] == "Large":
-        Floors = random.randint(11,100)
-        Rooms = random.randint(11,100)
-    elif LocSize["size"] == "Medium":
-        Floors = random.randint(4,10)
-        Rooms = random.randint(4,10)
-    else:
-        Floors = random.randint(1,3)
-        Rooms = random.randint(1,3)
-    return Floors, Rooms
-
-location_build("Temple")
-
-
-
-#Weapons:
-
-Weapon = {
-    "sword":[False, True],
-    "greatsword":[False, True],
-    "staff":[False, True],
-    "wand":[False, True],
-    "katana":[False, True],
-    "scythe":[False, True],
-    "rifle":[False, True],
-    "handgun":[False, True],
-    "bow":[False, True],
-    "crossbow":[False, True],
-    "melee":[False, True],
-    "magi-gun":[False, True]       
-}
-
-
-
-#Actions
-
-Action = {
-    "Movement": ["teleport", "walk", "run", "sprint", "return"],
-    "Attack":[False, True],
-    "Defend":["block"],
-    "Counter":["parry", "cancel"],
-    "Dodge":["dodge"]
-}
-def attack_action(weapon):
-    move = ''
-    if weapon["sword"] == True:
-        move =  "swing"
-    elif weapon["staff","wand", "magi-gun"] == True:
-        move = "cast"
-    elif weapon["bow","crossbow","handgun","rifle"] == True:
-        move = "shoot"
-    elif weapon["melee"] == True:
-        move = "brawl" 
-    else:
-        return "Please choose a valid weapon or make a new one!"
-    return move
-
-assert attack_action("sword") == "swing", "attack_action() is not functioning as intended"
 
 
 
