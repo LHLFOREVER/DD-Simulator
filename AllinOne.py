@@ -4,6 +4,7 @@ import openai
 import tkinter as tk
 from tkinter import simpledialog, messagebox
 from PIL import Image, ImageTk
+import time
 
 from DDDictionary import Environment
 
@@ -11,7 +12,7 @@ import random
 from DDDictionary import Person, Status, Species, Attributes, Affiliation
 
 # API key
-openai.api_key = 'enter API key'
+openai.api_key = ''
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
@@ -77,7 +78,7 @@ height = 800
 app.geometry(f"{width}x{height}")
 
 bg_image = Image.open("DDD.jpg")
-bg_image_resized = bg_image.resize((width, height), Image.ANTIALIAS)
+bg_image_resized = bg_image.resize((width, height))
 bg_photo = ImageTk.PhotoImage(bg_image_resized)
 
 canvas = tk.Canvas(app, width=width, height=height)
