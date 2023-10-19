@@ -12,14 +12,14 @@ import random
 from DDDictionary import Person, Status, Species, Attributes, Affiliation
 
 # API key
-openai.api_key = ''
+openai.api_key = "Enter API key here"
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
-        max_tokens=50
+        max_tokens=300
     )
     return response.choices[0].text.strip()
 
