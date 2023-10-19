@@ -11,8 +11,7 @@ import random
 from DDDictionary import Person, Status, Species, Attributes, Affiliation
 
 # API key
-# API key
-openai.api_key = 'Enter your API key'
+openai.api_key = 'enter API key'
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
