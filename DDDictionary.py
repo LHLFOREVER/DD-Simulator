@@ -29,6 +29,7 @@ Attributes = {
     "SPD": 1
 }
 
+
 Status = {
     "Nobility": ["Rank","Nobility Status"],
     "Knight": [False, True],
