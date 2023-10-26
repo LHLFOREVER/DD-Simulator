@@ -24,7 +24,7 @@ def generate_response(user_message):
     response = generate_openai_completion(prompt, model="text-davinci-004")
     return response
 
-
+# Combine the generate, get response, and the other get response code on line 193 to 222
 def get_response():
     user_input = user_input_entry.get()
     if user_input:
@@ -364,55 +364,3 @@ player_action = "explore the dark corners of the cave, searching for hidden trea
 generated_text = generate_dnd_story(game_state, player_action)
 print(generated_text)
 
-
-# The prompt is constructed to include details about the game state, location,
-# party members, and the current player's action. This helps set the context for
-# the AI to generate a more relevant and immersive narrative.
-# Need to customize the game_state dictionary to reflect the current state of 
-# your D&D game, including the location, party members, and the current player.
-# The generated text will continue the story in a D&D-like context based on the provided
-# game state and player action.
-
-#--------------------------------------------------------------------------------
-#simulated NPCs.py
-
-
-# Initial prompt to generate an NPC
-npc_prompt = "Create an NPC for a Dungeons & Dragons game. This NPC is a wise old wizard who resides in a tower deep within the enchanted forest."
-
-# Dictionary to store NPC information
-npc_information = {}
-
-# Generate initial NPC information
-def generate_initial_npc():
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=npc_prompt,
-        max_tokens=100
-    )
-    
-    npc_information["description"] = response.choices[0].text.strip()
-
-# Respond to player interaction
-def respond_to_player(player_input):
-    dialogue_prompt = f"Player: '{player_input}'\nNPC: '{npc_information['description']}'"
-
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=dialogue_prompt,
-        max_tokens=100
-    )
-
-    npc_response = response.choices[0].text.strip().split("NPC: ")[0]
-    return npc_response
-
-# Generate initial NPC
-generate_initial_npc()
-
-# Simulate player interactions
-player_question = "What kind of magic spells do you specialize in?"
-dynamic_npc_response = respond_to_player(player_question)
-
-print("Initial NPC Description:", npc_information["description"])
-print("Player Question:", player_question)
-print("Dynamic NPC Response:", dynamic_npc_response)
