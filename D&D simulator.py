@@ -72,7 +72,7 @@ height = 800
 app.geometry(f"{width}x{height}")
 
 bg_image = Image.open("DDD.jpg")
-bg_image_resized = bg_image.resize((width, height), Image.ANTIALIAS)
+bg_image_resized = bg_image.resize((width, height))
 bg_photo = ImageTk.PhotoImage(bg_image_resized)
 
 canvas = tk.Canvas(app, width=width, height=height)
