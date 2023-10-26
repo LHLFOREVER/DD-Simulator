@@ -27,7 +27,7 @@ def save_to_file(question, answer):
     with open("queries_and_answers.txt", "a") as file:
         file.write(f"Question: {question}\n")
         file.write(f"Answer: {answer}\n\n")
-
+        
 def get_response():
     user_input = user_input_entry.get()
     if user_input:
