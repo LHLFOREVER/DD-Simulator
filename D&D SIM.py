@@ -9,7 +9,7 @@ from DDDictionary import Environment, Person, Status, Species, Attributes, Affil
 openai.api_key = "enter api key"
 
 class AutoGenFramework:
-    def __init__(self, model="text-davinci-004"):
+    def __init__(self, model="text-davinci-003"):
         self.model = model
 
     def generate_response(self, user_message):
@@ -31,7 +31,19 @@ def save_to_file(question, answer):
 def get_response():
     user_input = user_input_entry.get()
     if user_input:
-        response = auto_gen.generate_response(user_input)
+        if user_input.lower().startswith("story:"):
+            # Extract the player action and generate a story
+            player_action = user_input[len("story:"):].strip()
+            game_state = {
+                'location': random.choice(Environment['Region']),
+                'party_members': [random.choice(Person['Species']) for _ in range(3)],
+                'current_player': 'John',
+            }
+            response = generate_dnd_story(game_state, player_action)
+        else:
+            # Treat as a general query
+            response = auto_gen.generate_response(user_input)
+        
         save_to_file(user_input, response)
         history_text.config(state=tk.NORMAL)
         history_text.insert(tk.END, f"You: {user_input}\n")
@@ -41,6 +53,7 @@ def get_response():
         user_input_entry.delete(0, tk.END)
     else:
         messagebox.showinfo("Info", "Please enter a question.")
+
 
 def roll_dice(dice):
     return random.randint(1, int(dice[1:]))
@@ -62,7 +75,7 @@ def generate_dnd_story(game_state, player_action):
     prompt += "What happens next?"
 
     response = openai.Completion.create(
-        engine="text-davinci-004",
+        engine="text-davinci-003",
         prompt=prompt,
         max_tokens=100,
         n=1,
