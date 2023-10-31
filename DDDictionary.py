@@ -169,7 +169,6 @@ def location_build(place):
         Rooms = random.randint(1,3)
     return Floors, Rooms
 
-location_build("Temple")
 
 
 
