@@ -6,7 +6,7 @@ from PIL import Image, ImageTk
 import time
 import random
 from DDDictionary import Environment, Person, Status, Species, Attributes, Affiliation
-openai.api_key = "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"
+openai.api_key = "enter api key"
 
 class AutoGenFramework:
     def __init__(self, model="text-davinci-004"):
