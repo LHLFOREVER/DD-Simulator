@@ -22,7 +22,6 @@ class AutoGenFramework:
         return response.choices[0].text.strip()
 auto_gen = AutoGenFramework()
 
-
 def save_to_file(question, answer):
     with open("queries_and_answers.txt", "a") as file:
         file.write(f"Question: {question}\n")
