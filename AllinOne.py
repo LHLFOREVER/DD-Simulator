@@ -6,6 +6,7 @@ from PIL import Image, ImageTk
 import random
 
 from DDDictionary import Environment, Person, Status, Species, Attributes, Affiliation
+"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"
 
 # API key
 openai.api_key = 'enter API key' 
@@ -24,7 +25,7 @@ def generate_response(user_message):
     response = generate_openai_completion(prompt, model="text-davinci-004")
     return response
 
-# Combine the generate, get response, and the other get response code on line 193 to 222
+
 def get_response():
     user_input = user_input_entry.get()
     if user_input:
@@ -188,21 +189,7 @@ print("Player Question:", player_question)
 print("Dynamic NPC Response:", dynamic_npc_response)
 
 
-# Main file
 
-import openai
-import tkinter as tk
-from tkinter import simpledialog, messagebox
-from PIL import Image, ImageTk
-import time
-
-from DDDictionary import Environment
-
-import random
-from DDDictionary import Person, Status, Species, Attributes, Affiliation
-
-# API key
-openai.api_key = "Enter API key here"
 
 def generate_response(user_message):
     prompt = f"User: {user_message}\nChatGPT:"
@@ -363,4 +350,3 @@ player_action = "explore the dark corners of the cave, searching for hidden trea
 
 generated_text = generate_dnd_story(game_state, player_action)
 print(generated_text)
-
