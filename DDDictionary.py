@@ -116,58 +116,6 @@ Multiplier = {
     "buff":{"1.0x", "1.2x", "1.5x"},
     "debuff":{"0.75x", "0.5x", "0.25x"} 
 }
- 
-
-
-
-# Function Testing
-Floors = 0
-Rooms = 0
-
-
-for loc in Environment.get("location"):
-    if Environment.get("Location") == "Villian's Castle" or "Temple" or "Adventurer's Guild":
-        LocSize["size"] = "Medium"
-    elif Environment.get("Location") == "Dark Cave" or "Dungeon":
-        LocSize["size"] = "Large"
-    else:
-        LocSize["size"] = "Small"
-
-# Determining Building Size
-if LocSize.get("size") == "Large":
-    Floors = random.randint(11,100)
-    Rooms = random.randint(11,100)
-elif LocSize.get("size") == "Medium":
-    Floors = random.randint(4,10)
-    Rooms = random.randint(4,10)
-else:
-    Floors = random.randint(1,3)
-    Rooms = random.randint(1,3)
-
-Floors = 0
-Rooms = 0
-def location_build(place):
-    for place in Environment["Location"]:
-        if Environment["Location"] == ("Villian's Castle" or "Temple" or "Adventurer's Guild"):
-            LocSize["size"] = "Medium"
-        elif Environment["Location"] == ("Dark Cave" or "Dungeon"):
-            LocSize["size"] = "Large"
-        elif Environment["Location"] != ("Dark Cave" or "Dungeon" or "Villian's Castle" or "Temple" or "Adventurer's Guild"):
-            LocSize["size"] = "Small"
-        else:
-            return("Please enter a valid location.")
-
-# Determining Building Size
-    if LocSize["size"] == "Large":
-        Floors = random.randint(11,100)
-        Rooms = random.randint(11,100)
-    elif LocSize["size"] == "Medium":
-        Floors = random.randint(4,10)
-        Rooms = random.randint(4,10)
-    else:
-        Floors = random.randint(1,3)
-        Rooms = random.randint(1,3)
-    return Floors, Rooms
 
 
 
