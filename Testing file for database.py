@@ -49,8 +49,8 @@ def query_database(query):
         return ', '.join([r[0] for r in result])
     else:
         return "No species found matching the query."
-
-# ... [Previous code above] ...
+#1
+# ... [Previous code aboveqwe] ...
 
 # Function to query the Person table
 def query_person(query):
