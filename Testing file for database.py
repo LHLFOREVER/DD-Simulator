@@ -6,7 +6,19 @@ from PIL import Image, ImageTk
 import time
 import random
 from DDDictionary import Environment, Person, Status, Species, Attributes, Affiliation
-openai.api_key = "enter api key"
+import sqlite3
+import pygame
+openai.api_key = "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"
+
+pygame.mixer.init()
+#123
+# Sound Functions
+def play_sound(sound_file):
+    pygame.mixer.Sound(sound_file).play()
+
+def play_background_music(music_file):
+    pygame.mixer.music.load(music_file)
+    pygame.mixer.music.play(-1) 
 
 class AutoGenFramework:
     def __init__(self, model="text-davinci-003"):
@@ -22,6 +34,53 @@ class AutoGenFramework:
         return response.choices[0].text.strip()
 auto_gen = AutoGenFramework()
 
+def query_database(query):
+    # Assuming you're looking for species information
+    connection = sqlite3.connect('game_database.db')
+    cursor = connection.cursor()
+    
+    # Modify the query based on your schema and what information you want to retrieve
+    cursor.execute("SELECT Race FROM Species WHERE Race LIKE ?", ('%' + query + '%',))
+    result = cursor.fetchall()
+
+    connection.close()
+    if result:
+        # If there are multiple matches, you can decide how to handle them, here we just join them
+        return ', '.join([r[0] for r in result])
+    else:
+        return "No species found matching the query."
+#1
+# ... [Previous code aboveqwe] ...
+
+# Function to query the Person table
+def query_person(query):
+    connection = sqlite3.connect('game_database.db')
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM Person WHERE Name LIKE ?", ('%' + query + '%',))
+    result = cursor.fetchone()
+    connection.close()
+    if result:
+        return f"Person: {result}"
+    else:
+        return "No person found matching your query."
+
+# Function to query the Enemy table
+def query_enemy(query):
+    connection = sqlite3.connect('game_database.db')
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM Enemy WHERE Name LIKE ?", ('%' + query + '%',))
+    result = cursor.fetchone()
+    connection.close()
+    if result:
+        return f"Enemy: {result}"
+    else:
+        return "No enemy found matching your query."
+
+# Add more functions to query other tables as needed...
+
+# Modified get_response Function to query the database based on table names
+
+
 
 def save_to_file(question, answer):
     with open("queries_and_answers.txt", "a") as file:
@@ -31,19 +90,17 @@ def save_to_file(question, answer):
 def get_response():
     user_input = user_input_entry.get()
     if user_input:
-        if user_input.lower().startswith("story:"):
-            # Extract the player action and generate a story
-            player_action = user_input[len("story:"):].strip()
-            game_state = {
-                'location': random.choice(Environment['Region']),
-                'party_members': [random.choice(Person['Species']) for _ in range(3)],
-                'current_player': 'John',
-            }
-            response = generate_dnd_story(game_state, player_action)
+        response = "I don't understand that."
+        # You could use a more sophisticated NLP solution here to determine intent
+        if "person" in user_input.lower():
+            response = query_person(user_input)
+        elif "enemy" in user_input.lower():
+            response = query_enemy(user_input)
+        # Add more conditions for other tables
         else:
-            # Treat as a general query
+            # If no database-related keyword is detected, use the OpenAI API
             response = auto_gen.generate_response(user_input)
-        
+
         save_to_file(user_input, response)
         history_text.config(state=tk.NORMAL)
         history_text.insert(tk.END, f"You: {user_input}\n")
@@ -53,6 +110,9 @@ def get_response():
         user_input_entry.delete(0, tk.END)
     else:
         messagebox.showinfo("Info", "Please enter a question.")
+
+# ... [Tkinter GUI setup and mainloop] ...
+
 
 
 def roll_dice(dice):
@@ -133,5 +193,9 @@ for idx, dice in enumerate(dice_types):
                       command=lambda d=dice: animate_roll(d),
                       activebackground='#ADD8E6', activeforeground='#000000')
     button.grid(row=1, column=idx, padx=5) 
-
+def on_closing():
+    pygame.mixer.quit()
+    app.destroy()
+#play_background_music("background_music.mp3")
+app.protocol("WM_DELETE_WINDOW", on_closing)
 app.mainloop()
