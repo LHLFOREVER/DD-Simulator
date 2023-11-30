@@ -8,7 +8,7 @@ import random
 from DDDictionary import Environment, Person, Status, Species, Attributes, Affiliation
 import sqlite3
 import pygame
-openai.api_key = "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"
+openai.api_key = "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"
 
 pygame.mixer.init()
 #123

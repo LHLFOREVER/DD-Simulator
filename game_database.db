@@ -1,0 +1,169 @@
+import sqlite3
+
+# Connect to the database (this will create the database if it doesn't exist)
+conn = sqlite3.connect('game_database.db')
+cursor = conn.cursor()
+
+# Create the tables
+# Playable Characters and Friendly NPCs
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Person (
+    ID INTEGER PRIMARY KEY,
+    Status TEXT,
+    Affiliation TEXT,
+    HP INTEGER,
+    STR INTEGER,
+    DEX INTEGER,
+    VIT INTEGER,
+    INT INTEGER,
+    SPD INTEGER,
+    Species TEXT,
+    Level INTEGER,
+    Experience INTEGER
+)
+''')
+
+# Affiliations like guilds or factions
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Affiliation (
+    ID INTEGER PRIMARY KEY,
+    Group TEXT
+)
+''')
+
+# Different species like human, elf, dwarf, etc.
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Species (
+    ID INTEGER PRIMARY KEY,
+    Race TEXT
+)
+''')
+
+# Status effects like poisoned, stunned, etc.
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Status (
+    ID INTEGER PRIMARY KEY,
+    StatusType TEXT,
+    Attribute1 TEXT,
+    Attribute2 TEXT,
+    Attribute3 TEXT
+)
+''')
+
+# Non-playable civilian characters
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Civilian (
+    ID INTEGER PRIMARY KEY,
+    CivilianStatus TEXT
+)
+''')
+
+# Adventurers could be a subclass of Person
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Adventurer (
+    ID INTEGER PRIMARY KEY,
+    AdventurerStatus TEXT,
+    Rank TEXT,
+    Role TEXT
+)
+''')
+
+# Knight could be a subclass of Adventurer
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Knight (
+    ID INTEGER PRIMARY KEY,
+    Weapon TEXT,
+    Rank TEXT
+)
+''')
+
+# Nobility, perhaps related to both Person and Civilian
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Nobility (
+    ID INTEGER PRIMARY KEY,
+    Rank TEXT,
+    NobilityStatus TEXT
+)
+''')
+
+# Enemies
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Enemy (
+    ID INTEGER PRIMARY KEY,
+    Status TEXT,
+    Affiliation TEXT,
+    HP INTEGER,
+    STR INTEGER,
+    DEX INTEGER,
+    VIT INTEGER,
+    INT INTEGER,
+    SPD INTEGER,
+    Species TEXT,
+    Level INTEGER,
+    Experience INTEGER
+)
+''')
+
+# Wild Mobs, could be a subclass of Enemy
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Wild_Mobs (
+    ID INTEGER PRIMARY KEY,
+    MobType TEXT
+)
+''')
+
+# Thinker Mobs, could be another subclass of Enemy
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Thinker_Mobs (
+    ID INTEGER PRIMARY KEY,
+    MobType TEXT
+)
+''')
+
+# Weapons table
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Weapon (
+    ID INTEGER PRIMARY KEY,
+    WeaponType TEXT,
+    SubType TEXT
+)
+''')
+
+# Environment settings like regions, locations, etc.
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Environment (
+    ID INTEGER PRIMARY KEY,
+    Region TEXT,
+    Location TEXT
+)
+''')
+
+# Location sizes
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS LocSize (
+    ID INTEGER PRIMARY KEY,
+    Size TEXT
+)
+''')
+
+# Buffs and debuffs
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS BuffsnDebuffs (
+    ID INTEGER PRIMARY KEY,
+    BuffType TEXT,
+    BuffName TEXT
+)
+''')
+
+# Multiplier effects for buffs, debuffs, or environmental factors
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Multiplier (
+    ID INTEGER PRIMARY KEY,
+    MultiplierType TEXT,
+    Value TEXT
+)
+''')
+
+# Save (commit) the changes and close the connection
+conn.commit()
+conn.close()
