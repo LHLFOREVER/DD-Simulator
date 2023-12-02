@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 import time
 import random
 from DDDictionary import Environment, Person, Status, Species, Attributes, Affiliation
-
+"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"
 # API key
 openai.api_key = "Enter API key here"
 # Utilize the GPT-4 model for generating the bot's response:

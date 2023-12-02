@@ -120,6 +120,48 @@ Multiplier = {
 
 
 
+# Function Testing
+Floors = 0
+Rooms = 0
+
+
+# Determining Building Size
+if LocSize.get("size") == "Large":
+    Floors = random.randint(11,100)
+    Rooms = random.randint(11,100)
+elif LocSize.get("size") == "Medium":
+    Floors = random.randint(4,10)
+    Rooms = random.randint(4,10)
+else:
+    Floors = random.randint(1,3)
+    Rooms = random.randint(1,3)
+
+Floors = 0
+Rooms = 0
+def location_build(place):
+    if place in ["Villian's Castle", "Temple", "Adventurer's Guild"]:
+        size = "Medium"
+    elif place in ["Dark Cave", "Dungeon"]:
+        size = "Large"
+    else:
+        size = "Small"
+
+    if size == "Large":
+        Floors = random.randint(11,100)
+        Rooms = random.randint(11,100)
+    elif size == "Medium":
+        Floors = random.randint(4,10)
+        Rooms = random.randint(4,10)
+    else:  # size == "Small"
+        Floors = random.randint(1,3)
+        Rooms = random.randint(1,3)
+
+    return Floors, Rooms
+
+
+
+
+
 
 
 

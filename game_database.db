@@ -8,7 +8,7 @@ cursor = conn.cursor()
 # Playable Characters and Friendly NPCs
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS Person (
-    ID INTEGER PRIMARY KEY,
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
     Status TEXT,
     Affiliation TEXT,
     HP INTEGER,
