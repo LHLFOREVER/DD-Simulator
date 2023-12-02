@@ -9,7 +9,9 @@ import DDDictionary
 from DDDictionary import *
 import sqlite3
 import pygame
-openai.api_key = "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"
+openai.api_key = "API"
+
+
 
 pygame.mixer.init()
 #123
