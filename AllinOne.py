@@ -6,6 +6,7 @@ from tkinter import simpledialog, messagebox
 from PIL import Image, ImageTk
 import time
 import random
+import json
 from DDDictionary import Environment, Person, Status, Species, Attributes, Affiliation
 
 # API key
@@ -179,3 +180,4 @@ player_action = "explore the dark corners of the cave, searching for hidden trea
 
 generated_text = generate_dnd_story(game_state, player_action)
 print(generated_text)
+
