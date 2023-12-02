@@ -5,10 +5,11 @@ from tkinter import simpledialog, messagebox
 from PIL import Image, ImageTk
 import time
 import random
-from DDDictionary import Environment, Person, Status, Species, Attributes, Affiliation
+import DDDictionary
+from DDDictionary import *
 import sqlite3
 import pygame
-openai.api_key = "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"
+openai.api_key = "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"
 
 pygame.mixer.init()
 #123
@@ -29,7 +30,7 @@ class AutoGenFramework:
         response = openai.Completion.create(
             engine=self.model,
             prompt=prompt,
-            max_tokens=50
+            max_tokens=200
         )
         return response.choices[0].text.strip()
 auto_gen = AutoGenFramework()
@@ -49,20 +50,27 @@ def query_database(query):
         return ', '.join([r[0] for r in result])
     else:
         return "No species found matching the query."
-#1
-# ... [Previous code aboveqwe] ...
+
 
 # Function to query the Person table
 def query_person(query):
     connection = sqlite3.connect('game_database.db')
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM Person WHERE Name LIKE ?", ('%' + query + '%',))
+    
+    # Let's say you want to check if the 'query' is a valid status in the DDDictionary.py 'Person' list
+    if query in DDDictionary.Person['Status']:
+        # Modify the SQL query to use the 'Status' from the DDDictionary.py
+        cursor.execute("SELECT * FROM Person WHERE Status = ?", (query,))
+    else:
+        return "Status not found in DDDictionary."
+
     result = cursor.fetchone()
     connection.close()
     if result:
         return f"Person: {result}"
     else:
         return "No person found matching your query."
+
 
 # Function to query the Enemy table
 def query_enemy(query):
@@ -86,7 +94,31 @@ def save_to_file(question, answer):
     with open("queries_and_answers.txt", "a") as file:
         file.write(f"Question: {question}\n")
         file.write(f"Answer: {answer}\n\n")
+'''def get_response():
+    user_input = user_input_entry.get()
+    if user_input:
+        response = "I don't understand that."
+        # You could use a more sophisticated NLP solution here to determine intent
+        if "person" in user_input.lower():
+            response = query_person(user_input)
+        elif "enemy" in user_input.lower():
+            response = query_enemy(user_input)
+        # Add more conditions for other tables
+        else:
+            # If no database-related keyword is detected, use the OpenAI API
+            response = auto_gen.generate_response(user_input)
 
+        save_to_file(user_input, response)
+        history_text.config(state=tk.NORMAL)
+        history_text.insert(tk.END, f"You: {user_input}\n")
+        history_text.insert(tk.END, f"ChatGPT: {response}\n\n")
+        history_text.config(state=tk.DISABLED)
+        history_text.see(tk.END)
+        user_input_entry.delete(0, tk.END)
+    else:
+        messagebox.showinfo("Info", "Please enter a question.")
+
+'''
 def get_response():
     user_input = user_input_entry.get()
     if user_input:
@@ -111,7 +143,7 @@ def get_response():
     else:
         messagebox.showinfo("Info", "Please enter a question.")
 
-# ... [Tkinter GUI setup and mainloop] ...
+
 
 
 
